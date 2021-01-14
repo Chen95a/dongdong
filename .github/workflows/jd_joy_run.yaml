@@ -1,13 +1,16 @@
-name: 京喜农场
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: 宠汪汪邀请助力与赛跑助力脚本
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 1,4,12 * * *'
+    - cron: '15 * * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jxnc
+    types: joy_run
 jobs:
   build:
 
@@ -33,9 +36,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【京喜农场脚本】'
+      - name: '运行 【宠汪汪邀请助力与赛跑助力脚本】'
         run: |
-          node jd_jxnc.js
+          node jd_joy_run.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
@@ -44,3 +47,6 @@ jobs:
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
